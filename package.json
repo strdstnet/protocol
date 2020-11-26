@@ -1,0 +1,18 @@
+{
+  "name": "@strdstnet/protocol",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/strdstnet/protocol.git",
+  "scripts": {
+    "build": "rm -rf lib && tsc && cp -r src/data lib/data"
+  },
+  "dependencies": {
+    "@strdst/utils.nbt": "^1.0.2",
+    "@strdstnet/utils.binary": "^1.0.4"
+  },
+  "devDependencies": {
+    "@strdst/tsconfig": "^1.0.3",
+    "@types/node": "^14.14.10",
+    "typescript": "^4.1.2"
+  }
+}
