@@ -1,7 +1,8 @@
 {
   "name": "@strdstnet/protocol",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/strdstnet/protocol.git",
   "scripts": {
     "build": "rm -rf lib && tsc && cp -r src/data lib/data"
