@@ -1,3 +1,4 @@
 [submodule "src/data"]
 	path = src/data
 	url = https://github.com/strdstnet/protocol-data.git
+	branch = 1.16.100
