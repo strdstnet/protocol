@@ -24,7 +24,7 @@ export class BundledPacket<T = unknown> extends Packet<BPacket<T>> {
   constructor(flags?: number, schema: Array<IPacketSchemaItem<BPacket<T>>> = [], props?: any) {
     super((flags || 0) & 0xff, schema, {
       ...BundledPacket.defaultProps,
-      props,
+      ...props,
     })
   }
 
