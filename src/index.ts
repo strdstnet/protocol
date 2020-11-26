@@ -1,5 +1,6 @@
 export * from './bedrock'
 export * from './custom'
 export * from './raknet'
+export * from './BundleUtils'
 export * from './Packet'
 export * from './types'
