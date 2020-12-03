@@ -397,6 +397,12 @@ export enum TitleCommand {
   SET_ANIMATION_TIMES = 5,
 }
 
+export enum TitleType {
+  TITLE = 2,
+  SUBTITLE = 3,
+  ACTIONBAR = 4,
+}
+
 // TODO: Biome types
 export enum BiomeType {
 
@@ -487,6 +493,12 @@ export enum Reliability {
   UnreliableACK = 5,
   ReliableACK = 6,
   ReliableOrderedACK = 7,
+}
+
+export enum WorldSound {
+  HIT = 1,
+  STEP = 2,
+  PLACE = 6,
 }
 
 export const DummyAddress: IAddress = {
