@@ -19,14 +19,14 @@ export class Interact extends BatchedPacket<IInteract> {
       { name: 'target', parser: DataType.U_VARLONG },
       {
         parser({ type, data, props }) {
-          if(type === ParserType.ENCODE) {
+          if(type === ParserType.DECODE) {
             if (props.action == InteractAction.MOUSE_OVER) {
               data.readFloat()
               data.readFloat()
               data.readFloat()
             }
           } else {
-            throw new Error(`DECODE not implemented`)
+            throw new Error(`ENCODE not implemented`)
           }
         },
       },
