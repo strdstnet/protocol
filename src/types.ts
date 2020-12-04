@@ -1,3 +1,4 @@
+import { CompoundTag } from '@strdst/utils.nbt'
 import { Vector3, MAGIC, IItem, IAddress } from '@strdstnet/utils.binary'
 
 export enum Packets {
