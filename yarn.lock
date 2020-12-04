@@ -9,10 +9,10 @@
   dependencies:
     "@tsconfig/node14" "^1.0.0"
 
-"@strdst/utils.binary@^1.0.4":
-  version "1.0.4"
-  resolved "https://npm.pkg.github.com/download/@strdst/utils.binary/1.0.4/e9f5591cf191a59901d42d68cf7858330d3725cacdf4c667153036d5be555451#54fb7d61082433497a2bb0f5fc544db4fa7780af"
-  integrity sha512-+kJ7qizVDKrvXOnwv+JIh5cZ/rX8B2XUTkBht/gJZnMY2RLluRY62LVJpM79RYg3UabHABi006XYBpO2Iw62ZQ==
+"@strdst/utils.binary@^1.0.5":
+  version "1.0.5"
+  resolved "https://npm.pkg.github.com/download/@strdst/utils.binary/1.0.5/4fb8e9a8999cf8f76cce8df62edb8f162c1fde5952311d36827b9cc52b99d468#271e30b1984f477798d594ddec475e9c9f4ddb3d"
+  integrity sha512-VpnQL4Xz+m8Yg4KkI3KNeO7YTqVs8FeruTNa5CyO5DBledRmi51nzJH/EwXrnqNnM4S8m3/lIkeHbcHYCqqM3w==
   dependencies:
     "@strdst/utils.nbt" "^1.0.2"
     uuid "^8.3.0"
@@ -22,12 +22,12 @@
   resolved "https://npm.pkg.github.com/download/@strdst/utils.nbt/1.0.2/2ac0ab43add66538c356ebc40e536e300a88bdcd65f2566e7b7110e81c49091d#df949dc867568e290bc02dd9f2d2b591426d35a6"
   integrity sha512-vfGQuAlAfWYneIjHPDyQ4Z4+VUh85RaygVAg6PoZA3yiY51eGyMOMf+VHoSEmAcIFjr8rJZCb5Tenfcz0EfFBw==
 
-"@strdstnet/utils.binary@^1.0.8":
-  version "1.0.8"
-  resolved "https://npm.pkg.github.com/download/@strdstnet/utils.binary/1.0.8/8f7ec5c39b87c4af523424d2bf138763b64a8cbc6842acf8fe9f85bb7e008bda#cbf68cb77400a0df2ee16c600ed3f78d4f2b1de0"
-  integrity sha512-InRrRCE7ZAF5ik3M2ghnyMM11jkNcHmMNO2UP2yA4mfYWsi1ApIOLCeMG+N5Eo2GWnEW7iODPwltUu+08dkcrQ==
+"@strdstnet/utils.binary@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@strdstnet/utils.binary/1.1.0/7aedfc59c01df15e69adbae75d043b6ae346e232d08f32f6cb4a90248cf358a7#928b76d9cd54d2ec37c234cf29a1926088a78710"
+  integrity sha512-k4JrE023k+uf5xqfixLPUTziRZNDn02BmxmOns7lUbk/e4DDwuAuXAI2yCwwRFWyg2sCxBneuaTfUQE+Y4Tsgg==
   dependencies:
-    "@strdst/utils.binary" "^1.0.4"
+    "@strdst/utils.binary" "^1.0.5"
     "@strdst/utils.nbt" "^1.0.2"
     uuid "^8.3.0"
 
