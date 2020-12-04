@@ -26,7 +26,7 @@ export class LevelChunk extends BatchedPacket<ILevelChunk> {
               x: data.readVarInt(),
               z: data.readVarInt(),
               subChunks: [],
-              tileTags: [],
+              tiles: [],
               biomeData: [],
             }
             subChunkCount = data.readUnsignedVarInt()
