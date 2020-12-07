@@ -219,6 +219,7 @@ export enum DataType {
   BYTE_ROTATION,
   BLOCK_POSITION,
   BYTE_ARRAY,
+  EXPERIMENTS,
 }
 
 export const BITFLAG_SECOND_SET = 1 << 16
@@ -515,4 +516,10 @@ export enum BitFlag {
   PacketPair = 0x10,
   ContinuousSend = 0x08,
   NeedsBAndS = 0x04,
+}
+
+export interface IItemTableItem {
+  nid: string,
+  rid: number,
+  component: boolean,
 }

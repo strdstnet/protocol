@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@strdst/utils.nbt": "^1.0.2",
-    "@strdstnet/utils.binary": "^1.1.1"
+    "@strdstnet/utils.binary": "^1.1.2"
   },
   "devDependencies": {
     "@strdst/tsconfig": "^1.0.3",

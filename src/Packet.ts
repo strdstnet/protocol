@@ -97,6 +97,8 @@ const encodeDataType = (data: BinaryData, type: DataType, value: any, p?: string
       return data.writeBlockPosition(value)
     case DataType.BYTE_ARRAY:
       return data.writeByteArray(value)
+    case DataType.EXPERIMENTS:
+      return data.writeExperiments(value)
     default:
       console.error('Unknown DataType on write:', type)
   }
@@ -157,6 +159,8 @@ const decodeDataType = (data: BinaryData, type: DataType) => {
       return data.readBlockPosition()
     case DataType.BYTE_ARRAY:
       return data.readByteArray()
+    case DataType.EXPERIMENTS:
+      return data.readExperiments()
     default:
       console.error('Unknown DataType on read:', type)
   }

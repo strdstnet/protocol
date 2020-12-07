@@ -1,4 +1,4 @@
-import { IItem } from '@strdstnet/utils.binary'
+import { IItem, Namespaced } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { ParserType } from '../Packet'
 import { DataType, Packets } from '../types'
@@ -21,7 +21,9 @@ export class ContainerNotification extends BatchedPacket<IContainerNotification>
 
             for(let i = 0; i < props.items.length; i++) {
               const item = props.items[i]
-              data.writeVarInt(item.id === 0 || item.count < 1 ? 0 : 1)
+
+              const isEmpty = item.nid === Namespaced.AIR || item.count < 1
+              data.writeVarInt(isEmpty ? 0 : 1)
               data.writeContainerItem(item)
             }
           } else {

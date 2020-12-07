@@ -1,4 +1,4 @@
-import { Vector3 } from '@strdstnet/utils.binary'
+import { IExperiments, Vector3 } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { ParserType, Packet, def } from '../Packet'
 import {
@@ -16,6 +16,7 @@ import {
   IFloatGameRule,
   PlayerPermissions,
   GameRuleType,
+  IItemTableItem,
 } from '../types'
 
 interface IStartGameRequired {
@@ -51,7 +52,7 @@ interface IStartGameOptional {
   commandsEnabled: boolean,
   texturePacksRequired: boolean,
   gameRules: Array<IBoolGameRule | IIntGameRule | IFloatGameRule>,
-  experiment?: number,
+  experiments: IExperiments,
   IdontKnowhatThisIs?: boolean
   bonusChestEnabled: boolean,
   startWithMapEnabled: boolean,
@@ -76,9 +77,7 @@ interface IStartGameOptional {
   currentTick: bigint,
   enchantmentSeed: number,
   customBlocks: number,
-  legacyIdMap: {
-    [k: string]: number, // newId: legacyId - { "minecraft:dirt": 3 }
-  },
+  itemTable: IItemTableItem[],
   multiplayerCorrelationId: string,
   enableNewInventorySystem: boolean,
 }
@@ -190,8 +189,7 @@ export class StartGame extends BatchedPacket<IStartGame> {
           { name: 'pvp', type: GameRuleType.BOOL, value: true },
         ]),
       },
-      { name: 'experiment', parser: DataType.L_INT, resolve: def(0) },
-      { name: 'IdontKnowhatThisIs', parser: DataType.BOOLEAN, resolve: def(false) },
+      { name: 'experiments', parser: DataType.EXPERIMENTS, resolve: def({ experiments: [], previouslyEnabled: false }) },
       { name: 'bonusChestEnabled', parser: DataType.BOOLEAN, resolve: def(false) },
       { name: 'startWithMapEnabled', parser: DataType.BOOLEAN, resolve: def(false) },
       { name: 'defaultPlayerPermission', parser: DataType.VARINT, resolve: def(PlayerPermissions.MEMBER) },
@@ -226,27 +224,30 @@ export class StartGame extends BatchedPacket<IStartGame> {
       { name: 'enchantmentSeed', parser: DataType.VARINT, resolve: def(0) },
       { name: 'customBlocks', parser: DataType.U_VARINT, resolve: def(0) },
       {
-        name: 'legacyIdMap',
+        name: 'itemTable',
         parser({ type, data, props, value }) {
           if(type === ParserType.DECODE) {
-            props.legacyIdMap = {}
+            props.itemTable = []
 
             const count = data.readUnsignedVarInt()
             for(let i = 0; i < count; i++) {
-              props.legacyIdMap[data.readString()] = data.readSignedLShort()
+              props.itemTable.push({
+                nid: data.readString(),
+                rid: data.readLShort(),
+                component: data.readBoolean()
+              })
             }
           } else {
-            const ids = Object.entries(value as Record<string, number>)
+            data.writeUnsignedVarInt(props.itemTable.length)
 
-            data.writeUnsignedVarInt(ids.length)
-
-            for(const [newId, legacyId] of ids) {
-              data.writeString(newId)
-              data.writeSignedLShort(legacyId)
+            for(const { nid, rid, component } of props.itemTable) {
+              data.writeString(nid)
+              data.writeLShort(rid)
+              data.writeBoolean(component)
             }
           }
         },
-        resolve: def({}),
+        resolve: def([]),
       },
       { name: 'multiplayerCorrelationId', parser: DataType.STRING, resolve: def('') },
       { name: 'enableNewInventorySystem', parser: DataType.BOOLEAN, resolve: def(false) }, // TODO: .

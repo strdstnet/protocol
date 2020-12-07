@@ -1,3 +1,4 @@
+import { IExperiments } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { ParserType, IParserArgs } from '../Packet'
 import { DataType, Packets } from '../types'
@@ -12,8 +13,8 @@ interface IResourcePacksStack {
   mustAccept: boolean,
   behaviourPacks: IResourcePack[],
   resourcePacks: IResourcePack[],
-  experimental: boolean,
   gameVersion: string,
+  experiments: IExperiments,
 }
 
 function parsePacks(behaviourPacks: boolean) {
@@ -49,14 +50,7 @@ export class ResourcePacksStack extends BatchedPacket<IResourcePacksStack> {
       { parser: parsePacks(true) },
       { parser: parsePacks(false) },
       { name: 'gameVersion', parser: DataType.STRING },
-      {
-        parser({ type, data }) {
-          if (type === ParserType.ENCODE) {
-            data.writeLInt(0)
-            data.writeBoolean(false)
-          }
-        },
-      },
+      { name: 'experiments', parser: DataType.EXPERIMENTS },
     ], p)
   }
 
