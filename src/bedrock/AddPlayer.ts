@@ -1,4 +1,4 @@
-import { IItem, UUID, Vector3 } from '@strdstnet/utils.binary'
+import { IItem, UUID, Vector3, ItemIsDurable } from '@strdstnet/utils.binary'
 import { Metadata } from '@strdstnet/utils.binary/lib/Metadata'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { def } from '../Packet'
@@ -24,6 +24,15 @@ interface IAddPlayerOptional {
   metadata: Metadata,
 }
 
+const itemHolding: IItem = {
+  [ItemIsDurable]: false,
+  nid: 'minecraft:air',
+  rid: 0,
+  meta: 0,
+  count: 1,
+  damage: 0,
+}
+
 type IAddPlayer = IAddPlayerRequired & IAddPlayerOptional
 
 export class AddPlayer extends BatchedPacket<IAddPlayer> {
@@ -40,7 +49,7 @@ export class AddPlayer extends BatchedPacket<IAddPlayer> {
       { name: 'pitch', parser: DataType.FLOAT },
       { name: 'yaw', parser: DataType.FLOAT },
       { name: 'headYaw', parser: DataType.FLOAT },
-      { name: 'item', parser: DataType.CONTAINER_ITEM, resolve: def(0) },
+      { name: 'item', parser: DataType.CONTAINER_ITEM, resolve: def(itemHolding) },
       { name: 'metadata', parser: DataType.ENTITY_METADATA, resolve: def(new Metadata()) },
       { parser: DataType.U_VARINT, resolve: def(0) },
       { parser: DataType.U_VARINT, resolve: def(0) },
