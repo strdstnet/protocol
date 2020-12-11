@@ -99,6 +99,8 @@ const encodeDataType = (data: BinaryData, type: DataType, value: any, p?: string
       return data.writeByteArray(value)
     case DataType.EXPERIMENTS:
       return data.writeExperiments(value)
+    case DataType.SKIN:
+      return data.writeSkin(value)
     default:
       console.error('Unknown DataType on write:', type)
   }

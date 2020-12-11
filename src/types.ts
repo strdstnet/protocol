@@ -220,6 +220,7 @@ export enum DataType {
   BLOCK_POSITION,
   BYTE_ARRAY,
   EXPERIMENTS,
+  SKIN
 }
 
 export const BITFLAG_SECOND_SET = 1 << 16
