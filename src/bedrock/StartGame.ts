@@ -192,7 +192,7 @@ export class StartGame extends BatchedPacket<IStartGame> {
       { name: 'experiments', parser: DataType.EXPERIMENTS, resolve: def({ experiments: [], previouslyEnabled: false }) },
       { name: 'bonusChestEnabled', parser: DataType.BOOLEAN, resolve: def(false) },
       { name: 'startWithMapEnabled', parser: DataType.BOOLEAN, resolve: def(false) },
-      { name: 'defaultPlayerPermission', parser: DataType.VARINT, resolve: def(PlayerPermissions.MEMBER) },
+      { name: 'defaultPlayerPermission', parser: DataType.VARINT, resolve: def(PlayerPermissions.VISITOR) },
       { name: 'serverChunkTickRadius', parser: DataType.L_INT, resolve: def(4) },
       { name: 'hasLockedBehaviorPack', parser: DataType.BOOLEAN, resolve: def(false) },
       { name: 'hasLockedResourcePack', parser: DataType.BOOLEAN, resolve: def(false) },

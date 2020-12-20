@@ -2,7 +2,7 @@ import { IItem, UUID, Vector3, ItemIsDurable } from '@strdstnet/utils.binary'
 import { Metadata } from '@strdstnet/utils.binary/lib/Metadata'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { def } from '../Packet'
-import { DataType, Packets } from '../types'
+import { DataType, Packets, PlayerPermissions } from '../types'
 
 interface IAddPlayerRequired {
   uuid: UUID,
@@ -22,6 +22,7 @@ interface IAddPlayerOptional {
   deviceId: string,
   buildPlatform: number,
   metadata: Metadata,
+  permissions: PlayerPermissions,
 }
 
 const itemHolding: IItem = {
@@ -54,7 +55,7 @@ export class AddPlayer extends BatchedPacket<IAddPlayer> {
       { parser: DataType.U_VARINT, resolve: def(0) },
       { parser: DataType.U_VARINT, resolve: def(0) },
       { parser: DataType.U_VARINT, resolve: def(0) },
-      { parser: DataType.U_VARINT, resolve: def(0) },
+      { name: 'permissions', parser: DataType.U_VARINT, resolve: def(PlayerPermissions.VISITOR) }, // Permissions
       { parser: DataType.U_VARINT, resolve: def(0) },
       { parser: DataType.L_LONG, resolve: def(0n) },
       { parser: DataType.U_VARINT, resolve: def(0) }, // Link count
