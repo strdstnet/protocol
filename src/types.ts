@@ -524,3 +524,11 @@ export interface IItemTableItem {
   rid: number,
   component: boolean,
 }
+
+export interface ICommand {
+  name: string,
+  description: string,
+  permission: CommandPermissions,
+  args: ICommandArgument[],
+  aliases: string[],
+}

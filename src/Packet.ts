@@ -6,19 +6,20 @@ export enum ParserType {
   DECODE,
 }
 
-export interface IParserArgs<T> {
+export interface IParserArgs<T, TP> {
   type: ParserType,
   data: BinaryData,
   props: T,
   value: any,
   self: Packet<T>,
+  tempProps: TP,
 }
 
-type SchemaItemParser<T> = (args: IParserArgs<T>) => void
+type SchemaItemParser<T, TP> = (args: IParserArgs<T, TP>) => void
 
-export interface IPacketSchemaItem<T> {
+export interface IPacketSchemaItem<T, TP> {
   name?: string,
-  parser: DataType | SchemaItemParser<T>,
+  parser: DataType | SchemaItemParser<T, TP>,
   resolve?: (props: T) => any,
 }
 
@@ -168,7 +169,10 @@ const decodeDataType = (data: BinaryData, type: DataType) => {
   }
 }
 
-export abstract class Packet<T> {
+/**
+ * @description Packet<Props, Temp Props>
+ */
+export abstract class Packet<T, TP = any> {
 
   protected encodeId = true
   protected decodeId = true
@@ -177,7 +181,7 @@ export abstract class Packet<T> {
 
   public data!: BinaryData
 
-  constructor(public id: number, protected schema: Array<IPacketSchemaItem<T>>, props?: any) {
+  constructor(public id: number, protected schema: Array<IPacketSchemaItem<T, TP>>, props?: any) {
     if(props) this.props = Object.assign({}, props)
   }
 
@@ -193,6 +197,7 @@ export abstract class Packet<T> {
 
     Object.assign(this.props, props)
 
+    const tempProps: TP = {} as TP
     this.schema.forEach(({ name, parser, resolve }) => {
       const propsVal = name && this.validVal((this.props as any)[name]) ? (this.props as any)[name] : null
       const value = this.validVal(propsVal) ? propsVal : (resolve ? resolve(this.props) : null)
@@ -204,6 +209,7 @@ export abstract class Packet<T> {
           props: this.props,
           value,
           self: this,
+          tempProps,
         })
       } else {
         encodeDataType(data, parser, value, name)
@@ -221,6 +227,7 @@ export abstract class Packet<T> {
 
     this.id = (this.decodeId ? data.readByte() : this.id)
 
+    const tempProps: TP = {} as TP
     this.schema.forEach(({ name, parser }) => {
       if(typeof parser === 'function') {
         parser({
@@ -229,6 +236,7 @@ export abstract class Packet<T> {
           props: props as T,
           value: null,
           self: this,
+          tempProps,
         })
       } else {
         const result = decodeDataType(data, parser)

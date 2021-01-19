@@ -238,9 +238,9 @@ export class StartGame extends BatchedPacket<IStartGame> {
               })
             }
           } else {
-            data.writeUnsignedVarInt(props.itemTable.length)
+            data.writeUnsignedVarInt(value.length)
 
-            for(const { nid, rid, component } of props.itemTable) {
+            for(const { nid, rid, component } of value) {
               data.writeString(nid)
               data.writeLShort(rid)
               data.writeBoolean(component)

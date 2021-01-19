@@ -1,6 +1,6 @@
 import { Packet } from '../Packet'
 
-export class BatchedPacket<T = never> extends Packet<T> {
+export class BatchedPacket<T = never, TP = never> extends Packet<T, TP> {
 
   protected decodeId = false
   protected encodeId = false
