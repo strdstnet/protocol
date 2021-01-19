@@ -6,7 +6,7 @@ export enum ParserType {
   DECODE,
 }
 
-export interface IParserArgs<T, TP> {
+export interface IParserArgs<T, TP = any> {
   type: ParserType,
   data: BinaryData,
   props: T,
@@ -15,9 +15,9 @@ export interface IParserArgs<T, TP> {
   tempProps: TP,
 }
 
-type SchemaItemParser<T, TP> = (args: IParserArgs<T, TP>) => void
+type SchemaItemParser<T, TP = any> = (args: IParserArgs<T, TP>) => void
 
-export interface IPacketSchemaItem<T, TP> {
+export interface IPacketSchemaItem<T, TP = any> {
   name?: string,
   parser: DataType | SchemaItemParser<T, TP>,
   resolve?: (props: T) => any,
