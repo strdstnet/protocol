@@ -31,6 +31,7 @@ import { RequestChunkRadius } from './RequestChunkRadius'
 import { Packets } from '../types'
 import { BinaryData } from '@strdstnet/utils.binary'
 import { FormResponse } from './FormResponse'
+import { BlockPickRequest } from './BlockPickRequest'
 
 interface IPacketBatch {
   packets: Array<BatchedPacket<any>>,
@@ -144,6 +145,9 @@ export class PacketBatch extends BundledPacket<IPacketBatch> {
                   break
                 case Packets.FORM_RESPONSE:
                   packet = new FormResponse()
+                  break
+                case Packets.BLOCK_PICK_REQUEST:
+                  packet = new BlockPickRequest()
                   break
                 default:
                   packet = new UnknownBatchedPacket(packetId, [])
