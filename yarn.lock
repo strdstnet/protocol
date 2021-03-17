@@ -5,15 +5,6 @@ __metadata:
   version: 4
   cacheKey: 7
 
-"@strdst/tsconfig@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@strdst/tsconfig@npm:1.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40strdst%2Ftsconfig%2F1.0.3%2Fce0fcc97e9ff1634f449cd3812a355cc1749d1ec6afb0c75b61f640f3ba5cd6e"
-  dependencies:
-    "@tsconfig/node14": ^1.0.0
-  checksum: d694b326461621121c1714f439ab8556a8138660b2e6ef3fcc35c3f391b53307b44e75e49e1e5d174a2114a708df03b73b7f4128b780af86168a8010505720c5
-  languageName: node
-  linkType: hard
-
 "@strdst/utils.binary@npm:^1.0.8":
   version: 1.0.8
   resolution: "@strdst/utils.binary@npm:1.0.8::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40strdst%2Futils.binary%2F1.0.8%2F61bde59d41ac9858a57ccc0e9462a81b990cd3e3fe507fccef682376409bbdc9"
@@ -35,9 +26,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@strdstnet/protocol@workspace:."
   dependencies:
-    "@strdst/tsconfig": ^1.0.3
     "@strdst/utils.nbt": ^1.0.2
     "@strdstnet/utils.binary": ^1.1.9
+    "@tsconfig/node14": ^1.0.0
     "@types/node": ^14.14.10
     typescript: ^4.1.2
   languageName: unknown

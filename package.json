@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@strdst/utils.nbt": "^1.0.2",
-    "@strdstnet/utils.binary": "^1.1.9"
+    "@strdstnet/utils.binary": "^1.1.9",
+    "@tsconfig/node14": "^1.0.0"
   },
   "devDependencies": {
-    "@strdst/tsconfig": "^1.0.3",
     "@types/node": "^14.14.10",
     "typescript": "^4.1.2"
   }

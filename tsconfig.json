@@ -1,15 +1,11 @@
 {
-  "extends": "@strdst/tsconfig/tsconfig.json",
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "commonjs",
-    "lib": [],
-    "outDir": "lib",
-    "rootDir": "./src",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
+    "preserveConstEnums": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
-  }
+    "outDir": "lib",
+    "declaration": true
+  },
+  "include": ["src"],
+  "exclude": ["**/*.test.ts"]
 }
