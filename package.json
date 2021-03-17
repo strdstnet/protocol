@@ -2,13 +2,16 @@
   "name": "@strdstnet/protocol",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "main_": "src/index.ts",
+  "version": "1.210.1",
   "repository": "https://github.com/strdstnet/protocol.git",
   "scripts": {
-    "build": "rm -rf lib && tsc && cp -r src/data lib/data"
+    "build": "rm -rf lib && tsc && cp -r src/data lib/data",
+    "release": "yarn version patch && git add . && git commit -m $(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g') && git push"
   },
   "dependencies": {
     "@strdst/utils.nbt": "^1.0.2",
-    "@strdstnet/utils.binary": "^1.1.5"
+    "@strdstnet/utils.binary": "^1.1.9"
   },
   "devDependencies": {
     "@strdst/tsconfig": "^1.0.3",

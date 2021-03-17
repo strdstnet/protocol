@@ -12,12 +12,14 @@ export interface IUnconnectedPongMOTD {
   line2: string,
   maxPlayers: number,
   numPlayers: number,
+  serverId: bigint,
+  gamemode: string,
 }
 
 export class UnconnectedPong extends Packet<IUnconnectedPong> {
 
-  public static getMOTD({ line1, line2, maxPlayers, numPlayers }: IUnconnectedPongMOTD): string {
-    return `MCPE;${line1};27;${Protocol.BEDROCK_VERSION};${numPlayers};${maxPlayers};0;${line2}`
+  public static getMOTD({ line1, line2, maxPlayers, numPlayers, serverId, gamemode }: IUnconnectedPongMOTD, ): string {
+    return `MCPE;${line1};${Protocol.NETWORK_VERSION};${Protocol.BEDROCK_VERSION};${numPlayers};${maxPlayers};${serverId};${line2};${gamemode}`
   }
 
   public static parseMOTD(motd: string): IUnconnectedPongMOTD {
@@ -28,6 +30,8 @@ export class UnconnectedPong extends Packet<IUnconnectedPong> {
       line2: parts[7],
       maxPlayers: parseInt(parts[5], 10),
       numPlayers: parseInt(parts[4], 10),
+      serverId: BigInt(parts[6]),
+      gamemode: parts[8],
     }
   }
 

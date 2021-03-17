@@ -1,6 +1,14 @@
 import { CompoundTag } from '@strdst/utils.nbt'
 import { Vector3, MAGIC, IItem, IAddress } from '@strdstnet/utils.binary'
 
+export const Protocol = {
+  PROTOCOL_VERSION: 10,
+  NETWORK_VERSION: 428,
+  BEDROCK_VERSION: '1.16.210',
+  SYSTEM_ADDRESSES: 20,
+  MAGIC,
+}
+
 export enum Packets {
   /* RAKNET (Raw) */
   CONNECTED_PING = 0x00, // 0
@@ -112,13 +120,6 @@ export enum Packets {
   ITEM_COMPONENT = 0xA2, // 162
 }
 
-export const Protocol = {
-  PROTOCOL_VERSION: 10,
-  BEDROCK_VERSION: '1.16.100',
-  SYSTEM_ADDRESSES: 20,
-  MAGIC,
-}
-
 export enum PacketViolationType {
   MALFORMED = 0,
 }
@@ -166,6 +167,7 @@ export interface IClientData {
   ClientRandomId: number,
   ServerAddress: string,
   SkinId: string,
+  PlayFabId: string,
   SkinResourcePatch: string, // Base64
   SkinImageHeight: number,
   SkinImageWidth: number,
