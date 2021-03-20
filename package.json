@@ -3,7 +3,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "main_": "src/index.ts",
-  "version": "1.210.1",
+  "version": "1.210.2",
   "repository": "https://github.com/strdstnet/protocol.git",
   "scripts": {
     "build": "rm -rf lib && tsc && cp -r src/data lib/data",
