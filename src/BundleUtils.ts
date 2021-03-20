@@ -109,8 +109,8 @@ export function encodeBundledPacket(packet: BundledPacket<Props>): BinaryData {
  * @return [PacketBundle[], sequenceNumber, splitId]
  */
 export function bundlePackets(packets: Array<BundledPacket<any>>, _sequenceNumber = 0, _lastSplitId = -1, mtuSize: number): [PacketBundle[], number, number] {
-  let sequenceNumber = _sequenceNumber + 0
-  let lastSplitId = _lastSplitId + 0
+  let sequenceNumber = _sequenceNumber
+  let lastSplitId = _lastSplitId
 
   // IP header size (20 bytes) + UDP header size (8 bytes) + RakNet weird (8 bytes) + datagram header size (4 bytes) + max encapsulated packet header size (20 bytes)
   const maxLength = mtuSize - 60

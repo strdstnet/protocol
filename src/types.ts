@@ -29,6 +29,7 @@ export enum Packets {
   INCOMPATIBLE_PROTOCOL = 0x19, // 25
 
   /* STARDUST (Raw) */
+  PARTIAL_PACKET = 0x44, // 68
   EZ_TRANSFER = 0x45, // 69
   EZ_LOGIN = 0x46, // 70
 
