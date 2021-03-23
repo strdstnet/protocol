@@ -12,14 +12,14 @@ interface IEzLogin {
 
 export class EzLogin extends Packet<IEzLogin> {
 
-  constructor() {
+  constructor(p?: IEzLogin) {
     super(Packets.EZ_LOGIN, [
       { name: 'address', parser: DataType.ADDRESS },
       { name: 'mtuSize', parser: DataType.SHORT },
       { name: 'clientId', parser: DataType.LONG },
       { name: 'sequenceNumber', parser: DataType.L_TRIAD },
       { name: 'loginData', parser: DataType.BYTE_ARRAY },
-    ])
+    ], p)
   }
 
 }

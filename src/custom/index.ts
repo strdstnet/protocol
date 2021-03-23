@@ -1,3 +1,4 @@
+export * from './segments'
 export * from './EzLogin'
 export * from './EzTransfer'
 export * from './PartialPacket'

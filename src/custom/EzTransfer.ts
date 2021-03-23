@@ -11,13 +11,13 @@ interface IEzTransfer {
 
 export class EzTransfer extends Packet<IEzTransfer> {
 
-  constructor(public props: IEzTransfer) {
+  constructor(p?: IEzTransfer) {
     super(Packets.EZ_TRANSFER, [
       { name: 'serverType', parser: DataType.STRING },
       { name: 'clientId', parser: DataType.LONG },
       { name: 'sequenceNumber', parser: DataType.L_TRIAD },
       { name: 'loginData', parser: DataType.BYTE_ARRAY },
-    ])
+    ], p)
   }
 
 }
