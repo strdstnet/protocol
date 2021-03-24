@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.NODE_AUTH_TOKEN }}
+          # token: ${{ secrets.NODE_AUTH_TOKEN }}
           submodules: true
 
       - uses: actions/setup-node@v1
