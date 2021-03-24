@@ -33,7 +33,10 @@ jobs:
             echo 'PKG_VER<<EOF' >> $GITHUB_ENV
             node -e "console.log(require('./package.json').version);" >> $GITHUB_ENV
             echo 'EOF' >> $GITHUB_ENV
-      - run: git add . && git commit -m ${{ env.PKG_VER }} && git push
+      # - run: git add . && git commit -m ${{ env.PKG_VER }} && git push
+      - uses: EndBug/add-and-commit@v7
+        with:
+          message: ${{ env.PKG_VER }}
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
