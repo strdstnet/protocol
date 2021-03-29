@@ -1,5 +1,4 @@
-import { IItem, UUID, Vector3, ItemIsDurable } from '@strdstnet/utils.binary'
-import { Metadata } from '@strdstnet/utils.binary/lib/Metadata'
+import { IItem, UUID, Vector3, ItemIsDurable, Metadata } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { def } from '../Packet'
 import { DataType, Packets, PlayerPermissions } from '../types'

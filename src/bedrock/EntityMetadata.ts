@@ -1,4 +1,4 @@
-import { Metadata } from '@strdstnet/utils.binary/lib/Metadata'
+import { Metadata } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { DataType, Packets } from '../types'
 

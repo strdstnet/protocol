@@ -1,8 +1,8 @@
 {
   "name": "@strdstnet/protocol",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "main_": "src/index.ts",
+  "main_": "lib/index.js",
+  "types_": "lib/index.d.ts",
+  "main": "src/index.ts",
   "version": "1.0.2",
   "repository": "https://github.com/strdstnet/protocol.git",
   "scripts": {

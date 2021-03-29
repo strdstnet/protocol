@@ -1,5 +1,4 @@
-import { IItem, Vector3 } from '@strdstnet/utils.binary'
-import { Metadata } from '@strdstnet/utils.binary/lib/Metadata'
+import { IItem, Vector3, Metadata } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { DataType, Packets } from '../types'
 
