@@ -216,7 +216,9 @@ export enum DataType {
   U_VARINT,
   VARLONG,
   U_VARLONG,
+  /** @deprecated Use {ITEM_STACK} */
   CONTAINER_ITEM,
+  ITEM_STACK,
   CHUNK,
   UUID,
   ENTITY_METADATA,

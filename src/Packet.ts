@@ -85,7 +85,8 @@ const encodeDataType = (data: BinaryData, type: DataType, value: any, p?: string
     case DataType.L_LONG:
       return data.writeLLong(value)
     case DataType.CONTAINER_ITEM:
-      return data.writeContainerItem(value)
+    case DataType.ITEM_STACK:
+      return data.writeItemStack(value)
     // case DataType.CHUNK:
     //   return data.writeChunk(value)
     case DataType.UUID:
@@ -118,7 +119,7 @@ const decodeDataType = (data: BinaryData, type: DataType) => {
     case DataType.SHORT:
       return data.readShort()
     case DataType.SECURITY:
-      return data.readSecuity()
+      return data.readSecurity()
     case DataType.BOOLEAN:
       return data.readBoolean()
     case DataType.RAW_STRING:
@@ -155,7 +156,8 @@ const decodeDataType = (data: BinaryData, type: DataType) => {
     case DataType.ENTITY_METADATA:
       return data.readEntityMetadata()
     case DataType.CONTAINER_ITEM:
-      return data.readContainerItem()
+    case DataType.ITEM_STACK:
+      return data.readItemStack()
     case DataType.BYTE_ROTATION:
       return data.readByteRotation()
     case DataType.BLOCK_POSITION:

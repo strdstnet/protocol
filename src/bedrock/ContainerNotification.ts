@@ -1,11 +1,11 @@
-import { IItem, Namespaced } from '@strdstnet/utils.binary'
+import { IItem, IItemStack, Namespaced } from '@strdstnet/utils.binary'
 import { BatchedPacket } from '../bedrock/BatchedPacket'
 import { ParserType } from '../Packet'
 import { DataType, Packets } from '../types'
 
 interface IContainerNotification {
   containerId: number,
-  items: IItem[],
+  stacks: IItemStack[],
 }
 
 export class ContainerNotification extends BatchedPacket<IContainerNotification> {
@@ -14,26 +14,20 @@ export class ContainerNotification extends BatchedPacket<IContainerNotification>
     super(Packets.CONTAINER_NOTIFICATION, [
       { name: 'containerId', parser: DataType.U_VARINT },
       {
-        name: 'items',
+        name: 'stacks',
         parser({ type, data, props }) {
           if(type === ParserType.ENCODE) {
-            data.writeUnsignedVarInt(props.items.length)
+            data.writeUnsignedVarInt(props.stacks.length)
 
-            for(let i = 0; i < props.items.length; i++) {
-              const item = props.items[i]
-
-              const isEmpty = item.nid === Namespaced.AIR || item.count < 1
-              data.writeVarInt(isEmpty ? 0 : 1)
-              data.writeContainerItem(item)
+            for(const stack of props.stacks) {
+              data.writeItemStack(stack)
             }
           } else {
             const count = data.readUnsignedVarInt()
 
-            props.items = []
+            props.stacks = []
             for(let i = 0; i < count; i++) {
-              const isEmpty = data.readVarInt() === 1
-
-              props.items.push(data.readContainerItem())
+              props.stacks.push(data.readItemStack())
             }
           }
         },
